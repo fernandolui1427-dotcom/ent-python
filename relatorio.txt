@@ -1,0 +1,27 @@
+============================================================
+               RELATÓRIO DE ANÁLISE DE DADOS                
+                 Gerado em 09/10/2026 11:36                 
+============================================================
+
+REGISTROS VÁLIDOS (3)
+------------------------------------------------------------
+Linha 2   | Ana Souza            |  31 anos
+Linha 4   | Carla Dias           |  24 anos
+Linha 8   | Gina Melo            |  51 anos
+
+REGISTROS INVÁLIDOS (5)
+------------------------------------------------------------
+Linha 3   | Bruno Lima   | e-mail inválido: 'bruno.lima@@email.com'
+Linha 5   | Diego Alves  | e-mail inválido: 'diego.alves@email'
+Linha 6   | Elisa Rocha  | CPF inválido: '52998224725'
+Linha 7   | Fabio Nunes  | idade -4 fora do intervalo 0-120
+Linha 9   | Hugo Reis    | idade 175 fora do intervalo 0-120
+
+ESTATÍSTICAS
+------------------------------------------------------------
+Total de registros : 8
+Válidos            : 3 (37.5%)
+Inválidos          : 5 (62.5%)
+Idade média        : 35.3 anos
+Idade mín/máx      : 24 / 51
+============================================================

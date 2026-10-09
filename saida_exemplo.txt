@@ -1,0 +1,64 @@
+
+======================================================================
+1) Criando clientes e contas (10+ objetos)
+======================================================================
+4 clientes + 7 contas + banco = 12 objetos
+Banco Sprint6 | 4 cliente(s) | 7 conta(s) | R$ 22,150.00
+ - Ana Souza <ana@email.com> | CPF 529.982.247-25 | 2 conta(s)
+ - Bruno Lima <bruno@email.com> | CPF 111.444.777-35 | 2 conta(s)
+ - Carla Dias <carla@empresa.com.br> | CPF 390.533.447-05 | 2 conta(s)
+ - Diego Alves <diego@email.com> | CPF 123.456.789-09 | 1 conta(s)
+
+======================================================================
+2) Operações e histórico
+======================================================================
+ContaCorrente nº 1001 | Ana Souza | saldo R$ -300.00 | limite R$ 1,000.00
+   09/10/2026 11:47 | DEPÓSITO       | R$     500.00 | saldo R$   2,000.00
+   09/10/2026 11:47 | SAQUE          | R$   2,300.00 | saldo R$    -300.00
+
+======================================================================
+3) Polimorfismo: mesma chamada, comportamentos diferentes
+======================================================================
+1001 ContaCorrente   -> -R$    15.00
+1002 ContaPoupanca   -> +R$    25.00
+1003 ContaCorrente   -> -R$    20.00
+1004 ContaPoupanca   -> +R$    12.60
+1005 ContaCorrente   -> -R$    15.00
+1006 ContaPoupanca   -> +R$    66.00
+1007 ContaCorrente   -> -R$    15.00
+
+======================================================================
+4) Ordenação com __lt__ e igualdade com __eq__
+======================================================================
+  ContaPoupanca nº 1006 | Carla Dias | saldo R$ 11,066.00 | rende 0.60%/mês
+  ContaPoupanca nº 1002 | Ana Souza | saldo R$ 5,025.00 | rende 0.50%/mês
+  ContaCorrente nº 1005 | Carla Dias | saldo R$ 2,485.00 | limite R$ 500.00
+  ContaPoupanca nº 1004 | Bruno Lima | saldo R$ 1,812.60 | rende 0.70%/mês
+  ContaCorrente nº 1003 | Bruno Lima | saldo R$ 280.00 | limite R$ 500.00
+  ContaCorrente nº 1007 | Diego Alves | saldo R$ 35.00 | limite R$ 100.00
+  ContaCorrente nº 1001 | Ana Souza | saldo R$ -315.00 | limite R$ 1,000.00
+Conta 1001 == Conta 1001? True
+Conta 1001 == Conta 1002? False
+repr: ContaCorrente(numero=1001, titular='Ana Souza', saldo=-315.0)
+
+======================================================================
+5) Tratamento de exceções (entradas inválidas)
+======================================================================
+E-mail inválido          -> [ValorInvalidoError] E-mail inválido: 'eva@@mail'
+CPF inválido             -> [ValorInvalidoError] CPF inválido (use 000.000.000-00): '12345'
+Saldo inicial negativo   -> [ValorInvalidoError] Saldo inicial não pode ser negativo.
+Taxa inválida            -> [ValorInvalidoError] Taxa deve estar entre 0 e 0,10 (10%).
+Depósito negativo        -> [ValorInvalidoError] Valor deve ser positivo: -50
+Saque acima do limite    -> [SaldoInsuficienteError] Conta 1007: saldo R$ -4,965.00 ultrapassa o limite permitido (-R$ 100.00).
+Conta inexistente        -> [ContaNaoEncontradaError] Conta 9999 não existe.
+CPF duplicado            -> [ValorInvalidoError] CPF já cadastrado: 529.982.247-25
+Classe abstrata          -> Can't instantiate abstract class Conta without an implementation for abstract method 'aplicar_rotina_mensal'
+
+======================================================================
+6) Resumo final
+======================================================================
+Banco Sprint6 | 4 cliente(s) | 7 conta(s) | R$ 20,388.60
+ Ana Souza    saldo total: R$   4,710.00
+ Bruno Lima   saldo total: R$   2,092.60
+ Carla Dias   saldo total: R$  13,551.00
+ Diego Alves  saldo total: R$      35.00
